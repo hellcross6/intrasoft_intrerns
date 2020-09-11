@@ -1,11 +1,15 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import com.example.myapplication.repository.Repository
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -30,12 +34,31 @@ class Home : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
     }
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        val repository = Repository()
+        val viewModelFactory = MainViewModelFactory(repository)
+        viewModel = ViewModelProvider(this,viewModelFactory).get(MainViewModel::class.java)
+        viewModel.getPosts()
+        viewModel.myResponse.observe(this, Observer { response ->
+            Log.d("response", response.user_id.toString())
+        }
+        )
+
+
+
+
+
+
+
+
+
+
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         view.home_textView.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_home2_to_todos)}
         return view
