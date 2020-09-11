@@ -34,21 +34,14 @@ class Home : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
     }
-    private lateinit var viewModel: MainViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val repository = Repository()
-        val viewModelFactory = MainViewModelFactory(repository)
-        viewModel = ViewModelProvider(this,viewModelFactory).get(MainViewModel::class.java)
-        viewModel.getPosts()
-        viewModel.myResponse.observe(this, Observer { response ->
-            Log.d("response", response.user_id.toString())
-        }
-        )
+
 
 
 
