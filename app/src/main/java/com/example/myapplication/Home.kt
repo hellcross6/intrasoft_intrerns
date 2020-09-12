@@ -52,8 +52,7 @@ class Home : Fragment() {
 
 
 
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
-        view.home_textView.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_home2_to_todos)}
+
         return view
     }
 
