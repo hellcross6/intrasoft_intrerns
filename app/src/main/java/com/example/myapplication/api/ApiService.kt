@@ -5,8 +5,9 @@ import com.example.myapplication.data.ListOfPosts
 import retrofit2.Call
 import retrofit2.http.GET
 
-interface GetService {
+interface ApiService {
 
     @GET("posts")
-    fun getAllPosts() : Call<ListOfPosts>
+
+    suspend fun getAllPosts() : ListOfPosts
 }
