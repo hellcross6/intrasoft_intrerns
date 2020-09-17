@@ -1,7 +1,7 @@
 package com.example.myapplication.data
 
-data class ListOfPosts(
+data class ListOfUsers(
     val code: Int,
-    val `data`: List<Posts>
+    val `data`: List<Users>
 
 )

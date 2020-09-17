@@ -7,19 +7,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.data.ListOfPosts
-import com.example.myapplication.data.Posts
 import kotlinx.android.synthetic.main.item_layout.view.*
 
 class MainAdapter(
-    private val users: ArrayList<Posts>
+    private val users: ArrayList<ListOfPosts>
 ) : RecyclerView.Adapter<MainAdapter.DataViewHolder>() {
 
     class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(user: Posts) {
-            itemView.textViewPostsId.text = user.id.toString()
-            itemView.textViewUserId.text = user.user_id.toString()
+        fun bind(user: ListOfPosts) {
+            itemView.textViewPostsId.text = user.data[1].id.toString()
+            itemView.textViewUserId.text = user.data[1].user_id.toString()
             Glide.with(itemView.imageViewAvatar.context)
-                .load(user.title)
+                .load(user.data[1].title)
                 .into(itemView.imageViewAvatar)
         }
     }
@@ -38,12 +37,8 @@ class MainAdapter(
         holder.bind(users[position])
 
     fun addData(list: ListOfPosts) {
-        users.addAll(list)
+        users.addAll(listOf(list))
     }
 
-}
-
-private fun <E> java.util.ArrayList<E>.addAll(elements: ListOfPosts) {
-    TODO("Not yet implemented")
 }
 

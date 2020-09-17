@@ -1,7 +1,6 @@
 package com.example.myapplication.ui.main.viewstate
 
 import com.example.myapplication.data.ListOfPosts
-import com.example.myapplication.data.Posts
 
 sealed class MainState {
 

@@ -1,7 +1,7 @@
 package com.example.myapplication.data
 
-data class Posts(
-    val body: String,
+data class Todos(
+    val completed: Boolean,
     val created_at: String,
     val id: Int,
     val title: String,
