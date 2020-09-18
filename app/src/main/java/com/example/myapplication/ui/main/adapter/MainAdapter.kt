@@ -11,7 +11,7 @@ import com.example.myapplication.data.UserModel
 import kotlinx.android.synthetic.main.item_layout.view.*
 
 class MainAdapter(
-    private val users: ArrayList<User>
+    private val user: ArrayList<User>
 ) : RecyclerView.Adapter<MainAdapter.DataViewHolder>() {
 
     class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -22,7 +22,7 @@ class MainAdapter(
             itemView.textViewUserid.text = user.id.toString()
             itemView.textViewUsergender.text=user.gender
             itemView.textViewUsercreatedat.text=user.created_at
-            itemView.button3.text="Delete"
+            itemView.button3
 //            Glide.with(itemView.imageViewAvatar.context)
 //                .load(user.avatar)
 //                .into(itemView.imageViewAvatar)
@@ -37,13 +37,13 @@ class MainAdapter(
             )
         )
 
-    override fun getItemCount(): Int = users.size
+    override fun getItemCount(): Int = user.size
 
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) =
-        holder.bind(users[position])
+        holder.bind(user[position])
 
     fun addData(list: UserModel) {
-        users.addAll(list.data)
+        user.addAll(list.user)
     }
 
 }
