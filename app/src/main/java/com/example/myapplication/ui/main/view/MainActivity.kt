@@ -10,15 +10,13 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.api.ApiHelperImpl
-import com.example.myapplication.api.RetrofitInstance
+import com.example.myapplication.api.RetrofitBuilder
 import com.example.myapplication.data.users.UserModel
-
 import com.example.myapplication.ui.main.adapter.MainAdapter
 import com.example.myapplication.ui.main.intent.MainIntent
 import com.example.myapplication.ui.main.viewmodel.MainViewModel
 import com.example.myapplication.ui.main.viewstate.MainState
-import com.mindorks.framework.mvi.util.ViewModelFactory
-
+import com.example.myapplication.utils.ViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
@@ -67,7 +65,7 @@ class MainActivity : AppCompatActivity() {
             this,
             ViewModelFactory(
                 ApiHelperImpl(
-                    RetrofitInstance.apiService
+                    RetrofitBuilder.apiService
                 )
             )
         ).get(MainViewModel::class.java)
