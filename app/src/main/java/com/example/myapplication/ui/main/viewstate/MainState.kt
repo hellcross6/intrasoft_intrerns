@@ -1,5 +1,5 @@
 package com.example.myapplication.ui.main.viewstate
-import com.example.myapplication.data.users.UserModel
+import com.example.myapplication.data.UserModel
 
 
 sealed class MainState {

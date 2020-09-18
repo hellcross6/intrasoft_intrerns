@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.data.users.User
-import com.example.myapplication.data.users.UserModel
+import com.example.myapplication.data.User
+import com.example.myapplication.data.UserModel
 
 import kotlinx.android.synthetic.main.item_layout.view.*
 
