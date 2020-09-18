@@ -4,22 +4,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.myapplication.R
-import com.example.myapplication.data.ListOfPosts
+import com.example.myapplication.data.users.User
+import com.example.myapplication.data.users.UserModel
+
 import kotlinx.android.synthetic.main.item_layout.view.*
 
 class MainAdapter(
-    private val users: ArrayList<ListOfPosts>
+    private val users: ArrayList<User>
 ) : RecyclerView.Adapter<MainAdapter.DataViewHolder>() {
 
     class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(user: ListOfPosts) {
-            itemView.textViewPostsId.text = user.data[1].id.toString()
-            itemView.textViewUserId.text = user.data[1].user_id.toString()
-            Glide.with(itemView.imageViewAvatar.context)
-                .load(user.data[1].title)
-                .into(itemView.imageViewAvatar)
+        fun bind(user: User) {
+
+            itemView.textViewUserName.text = user.name
+            itemView.textViewUserEmail.text = user.email
+            itemView.textViewUserid.text = user.id.toString()
+            itemView.textViewUsergender.text=user.gender
+            itemView.textViewUsercreatedat.text=user.created_at
+            itemView.button3.text="Delete"
+//            Glide.with(itemView.imageViewAvatar.context)
+//                .load(user.avatar)
+//                .into(itemView.imageViewAvatar)
         }
     }
 
@@ -36,9 +42,8 @@ class MainAdapter(
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) =
         holder.bind(users[position])
 
-    fun addData(list: ListOfPosts) {
-        users.addAll(listOf(list))
+    fun addData(list: UserModel) {
+        users.addAll(list.data)
     }
 
 }
-

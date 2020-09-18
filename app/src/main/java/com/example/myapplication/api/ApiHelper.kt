@@ -1,10 +1,7 @@
 package com.example.myapplication.api
 
-import com.example.myapplication.data.ListOfPosts
-import com.example.myapplication.data.Posts
-import retrofit2.Call
+import com.example.myapplication.data.users.UserModel
 
 interface ApiHelper {
-
-    suspend fun getAllPosts(): ListOfPosts
+    suspend fun getUsers(): UserModel
 }

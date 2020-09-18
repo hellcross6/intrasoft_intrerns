@@ -2,9 +2,9 @@ package com.example.myapplication.ui.main.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myapplication.repository.MainRepository
 import com.example.myapplication.ui.main.intent.MainIntent
 import com.example.myapplication.ui.main.viewstate.MainState
+import com.example.myapplication.repository.MainRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -31,17 +31,17 @@ class MainViewModel(
         viewModelScope.launch {
             userIntent.consumeAsFlow().collect {
                 when (it) {
-                    is MainIntent.FetchPosts -> fetchPosts()
+                    is MainIntent.FetchUser -> fetchUser()
                 }
             }
         }
     }
 
-    private fun fetchPosts() {
+    private fun fetchUser() {
         viewModelScope.launch {
             _state.value = MainState.Loading
             _state.value = try {
-                MainState.Posts(repository.getPosts())
+                MainState.GetUsers(repository.getUsers())
             } catch (e: Exception) {
                 MainState.Error(e.localizedMessage)
             }

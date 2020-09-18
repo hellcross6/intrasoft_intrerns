@@ -1,16 +1,11 @@
 package com.example.myapplication.api
 
-import com.example.myapplication.data.ListOfPosts
-import com.example.myapplication.data.Posts
-import retrofit2.Call
-import retrofit2.Response
-import retrofit2.awaitResponse
+import com.example.myapplication.data.users.UserModel
 
-
-class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
-
-
-    override suspend fun getAllPosts() : ListOfPosts {
-        return apiService.getAllPosts()
+class ApiHelperImpl(private val getService: GetService) : ApiHelper {
+    override suspend fun getUsers(): UserModel {
+        return getService.getUsers()
     }
+
+
 }

@@ -1,14 +1,14 @@
 package com.example.myapplication.api
 
 
-import com.example.myapplication.data.ListOfPosts
-import com.example.myapplication.data.Posts
-import retrofit2.Call
+import com.example.myapplication.data.users.UserModel
 import retrofit2.http.GET
 
-interface ApiService {
+interface GetService {
 
-    @GET("posts")
+//    @GET("posts")
+//    fun getAllPosts() : Call<ListOfPosts>
 
-    suspend fun getAllPosts() : ListOfPosts
+    @GET("users")
+    fun getUsers() : UserModel
 }
