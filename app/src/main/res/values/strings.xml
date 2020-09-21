@@ -3,4 +3,17 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="fetch_user">Fetch Posts</string>
+    <string name="User_delete">Delete User</string>
+    <string name="Show_Posts">Show Posts</string>
+    <string name="show_com">Show Comments</string>
+    <string name="show_todos">Show TODOS</string>
+    <string name="show_post">posts</string>
+    <string name="navigation_drawer_open">Drawer Open</string>
+    <string name="navigation_drawer_close">Drawer Closed</string>
+    <string name="home_title">Home</string>
+    <string name="users_title">Users</string>
+    <string name="todos_title">Todos</string>
+    <string name="about_us_title">About us</string>
+    <string name="drawer_open">drawer open</string>
+    <string name="drawer_close">drawer close</string>
 </resources>

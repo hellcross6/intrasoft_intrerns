@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="200dp">
+    android:layout_height="210dp">
 
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -57,12 +57,52 @@
         tools:text="CreatedAt" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button3"
-        android:text="@string/User_delete"
+        android:id="@+id/delete"
         android:layout_width="109dp"
         android:layout_height="36dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/User_delete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textViewUsercreatedat"
         app:layout_constraintTop_toBottomOf="@+id/textViewUsercreatedat"
-        tools:text="User Delete" />
+        app:layout_constraintVertical_bias="0.027"
+        tools:text="User Delete"
+        android:layout_marginLeft="8dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/comments"
+        android:layout_width="109dp"
+        android:layout_height="36dp"
+        android:text="@string/show_com"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/delete"
+        app:layout_constraintTop_toBottomOf="@+id/delete"
+        app:layout_constraintVertical_bias="0.068"
+        tools:text="Comments" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/posts"
+        android:layout_width="109dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="168dp"
+        android:text="@string/show_post"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/delete"
+        app:layout_constraintTop_toBottomOf="@+id/delete"
+        app:layout_constraintVertical_bias="0.09"
+        tools:text="Posts"
+        android:layout_marginLeft="168dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/TODOS"
+        android:layout_width="109dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="176dp"
+        android:text="@string/show_todos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textViewUsercreatedat"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUsercreatedat"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="TODOS"
+        android:layout_marginLeft="176dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

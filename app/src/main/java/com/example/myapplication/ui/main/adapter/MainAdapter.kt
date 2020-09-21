@@ -8,7 +8,7 @@ import com.example.myapplication.R
 import com.example.myapplication.data.User
 import com.example.myapplication.data.UserModel
 
-import kotlinx.android.synthetic.main.item_layout.view.*
+import kotlinx.android.synthetic.main.user_layout.view.*
 
 class MainAdapter(
     private val user: ArrayList<User>
@@ -16,13 +16,15 @@ class MainAdapter(
 
     class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(user: User) {
-
             itemView.textViewUserName.text = user.name
             itemView.textViewUserEmail.text = user.email
             itemView.textViewUserid.text = user.id.toString()
             itemView.textViewUsergender.text=user.gender
             itemView.textViewUsercreatedat.text=user.created_at
-            itemView.button3
+            itemView.comments
+            itemView.delete
+            itemView.posts
+//            itemView.button3
 //            Glide.with(itemView.imageViewAvatar.context)
 //                .load(user.avatar)
 //                .into(itemView.imageViewAvatar)
@@ -32,7 +34,7 @@ class MainAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         DataViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.item_layout, parent,
+                R.layout.user_layout, parent,
                 false
             )
         )

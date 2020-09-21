@@ -48,7 +48,7 @@ class AboutUs : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance() =
             AboutUs().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)

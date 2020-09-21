@@ -1,7 +1,10 @@
 package com.example.myapplication.data
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class User (
 
         @SerializedName("id") val id : Int,
@@ -11,4 +14,4 @@ data class User (
         @SerializedName("status") val status : String,
         @SerializedName("created_at") val created_at : String,
         @SerializedName("updated_at") val updated_at : String
-    )
+    ) : Parcelable
