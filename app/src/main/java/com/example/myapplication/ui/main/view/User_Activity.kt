@@ -8,43 +8,31 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.Users
 import com.example.myapplication.api.ApiHelperImpl
 import com.example.myapplication.api.RetrofitBuilder
-import com.example.myapplication.data.UserModel
 import com.example.myapplication.ui.main.adapter.MainAdapter
 import com.example.myapplication.ui.main.intent.MainIntent
-import com.example.myapplication.ui.main.view.Fragments.User_Details
 import com.example.myapplication.ui.main.viewmodel.MainViewModel
 import com.example.myapplication.ui.main.viewstate.MainState
 import com.example.myapplication.utils.ViewModelFactory
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.progressBar
 import kotlinx.android.synthetic.main.activity_main.recyclerView
-import kotlinx.android.synthetic.main.data_activity.*
-import kotlinx.android.synthetic.main.fragment_users.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
-class User : AppCompatActivity() {
+class User_Activity : AppCompatActivity() {
 
 
     private lateinit var mainViewModel: MainViewModel
     private var adapter = MainAdapter(arrayListOf())
 
-    private lateinit var navController: NavController
-//    private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var drawerLayout: DrawerLayout
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,13 +88,13 @@ class User : AppCompatActivity() {
 
                     }
                     is MainState.Loading -> {
-                        buttonFetchUser.visibility = View.GONE
+                        // buttonFetchUser.visibility = View.GONE
                         progressBar.visibility = View.VISIBLE
                     }
 
                     is MainState.GetUsers -> {
                         progressBar.visibility = View.GONE
-                        buttonFetchUser.visibility = View.GONE
+                      //  buttonFetchUser.visibility = View.GONE
 //                        renderList(it.user)
 
                         val arguments = Bundle()
@@ -116,14 +104,14 @@ class User : AppCompatActivity() {
                         usersFragment.arguments = arguments;
 
                         supportFragmentManager.beginTransaction()
-                            .add(R.id.details_fragment, usersFragment, "UserFragment").commit()
+                            .add(R.id.data_class, usersFragment, "UserFragment").commit()
                         //Toast.makeText(this@MainActivity, it.user.data[0].email, Toast.LENGTH_SHORT).show()
 
                     }
                     is MainState.Error -> {
                         progressBar.visibility = View.GONE
-                        buttonFetchUser.visibility = View.VISIBLE
-                        Toast.makeText(this@User, it.error, Toast.LENGTH_LONG).show()
+                     //   buttonFetchUser.visibility = View.VISIBLE
+                        Toast.makeText(this@User_Activity, it.error, Toast.LENGTH_LONG).show()
                     }
                 }
             }

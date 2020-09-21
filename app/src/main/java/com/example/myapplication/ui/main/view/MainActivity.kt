@@ -15,16 +15,20 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.api.ApiHelperImpl
 import com.example.myapplication.api.RetrofitBuilder
+import com.example.myapplication.data.ListOfPosts
 import com.example.myapplication.data.UserModel
 
 import com.example.myapplication.ui.main.adapter.MainAdapter
+import com.example.myapplication.ui.main.adapter.PostsAdapter
 import com.example.myapplication.ui.main.intent.MainIntent
 import com.example.myapplication.ui.main.viewmodel.MainViewModel
 import com.example.myapplication.ui.main.viewstate.MainState
-import com.mindorks.framework.mvi.util.ViewModelFactory
+import com.example.myapplication.utils.ViewModelFactory
+
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -43,6 +47,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mainViewModel: MainViewModel
     private var adapter = MainAdapter(arrayListOf())
+    private  var adapterp = PostsAdapter(arrayListOf())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,25 +76,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupClicks() {
-        buttonFetchUser.setOnClickListener {
+       // buttonFetchUser.setOnClickListener {
             lifecycleScope.launch {
-                mainViewModel.userIntent.send(MainIntent.FetchUser)
+                mainViewModel.userIntent.send(MainIntent.FetchPosts)
             }
-        }
+        //}
     }
 
 
     private fun setupUI() {
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.run {
+        val rv :RecyclerView = findViewById(R.id.recyclerView)
+        rv.layoutManager = LinearLayoutManager(this)
+        rv.run {
             addItemDecoration(
                 DividerItemDecoration(
-                    recyclerView.context,
-                    (recyclerView.layoutManager as LinearLayoutManager).orientation
+                    rv.context,
+                    (rv.layoutManager as LinearLayoutManager).orientation
                 )
             )
         }
-        recyclerView.adapter = adapter
+        rv.adapter = adapterp
     }
 
 
@@ -112,20 +118,25 @@ class MainActivity : AppCompatActivity() {
 
                     }
                     is MainState.Loading -> {
-                        buttonFetchUser.visibility = View.GONE
+                      //  buttonFetchUser.visibility = View.GONE
                         progressBar.visibility = View.VISIBLE
                     }
 
                     is MainState.GetUsers -> {
                         progressBar.visibility = View.GONE
-                        buttonFetchUser.visibility = View.GONE
-                        renderList(it.user)
+                       // buttonFetchUser.visibility = View.GONE
+                       // renderList(it.user)
                         //Toast.makeText(this@MainActivity, it.user.data[0].email, Toast.LENGTH_SHORT).show()
+
+                    }
+                    is MainState.GetPosts -> {
+                        progressBar.visibility =View.GONE
+                        renderList(it.post)
 
                     }
                     is MainState.Error -> {
                         progressBar.visibility = View.GONE
-                        buttonFetchUser.visibility = View.VISIBLE
+                      //  buttonFetchUser.visibility = View.VISIBLE
                         Toast.makeText(this@MainActivity, it.error, Toast.LENGTH_LONG).show()
                     }
                 }
@@ -133,9 +144,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun renderList(users: UserModel) {
+    private fun renderList(posts :ListOfPosts) {
         recyclerView.visibility = View.VISIBLE
-        users.let { listOfUsers -> listOfUsers.let { adapter.addData(it) } }
-        adapter.notifyDataSetChanged()
+        posts.let { listOfUsers -> listOfUsers.let { adapterp.addData(it) } }
+        adapterp.notifyDataSetChanged()
     }
 }

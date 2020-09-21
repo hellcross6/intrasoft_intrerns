@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.data.UserModel
 import com.example.myapplication.ui.main.adapter.MainAdapter
-import com.example.myapplication.ui.main.view.User
-import kotlinx.android.synthetic.main.fragment_users.*
+import com.example.myapplication.ui.main.view.User_Activity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,7 +59,7 @@ class Users : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val rv: RecyclerView? = view?.findViewById(R.id.recyclerView3)
-        rv!!.layoutManager= LinearLayoutManager(User().applicationContext)
+        rv!!.layoutManager= LinearLayoutManager(User_Activity().applicationContext)
         rv.adapter = adapter
     }
 

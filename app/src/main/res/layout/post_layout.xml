@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="210dp">
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewPostsTitle"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="313dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.143"
+        tools:text="title"
+        android:layout_marginLeft="28dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewPostsBody"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewPostsTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPostsTitle"
+        tools:text="body" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewPostsid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textViewPostsBody"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPostsBody"
+        tools:text="postid" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewPostsuserId"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUserEmail"
+        tools:text="user_id" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewPostscreatedat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="156dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPostsuserId"
+        tools:text="CreatedAt" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

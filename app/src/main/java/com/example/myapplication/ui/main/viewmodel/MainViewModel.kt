@@ -31,8 +31,21 @@ class MainViewModel(
         viewModelScope.launch {
             userIntent.consumeAsFlow().collect {
                 when (it) {
-                    is MainIntent.FetchUser -> fetchUser()
+                    is MainIntent.FetchPosts -> fetchUser()
+
+                    is MainIntent.FetchPosts -> fetchPosts()
                 }
+            }
+        }
+    }
+
+    private fun fetchPosts() {
+        viewModelScope.launch {
+            _state.value = MainState.Loading
+            _state.value = try {
+                MainState.GetPosts(repository.getPosts())
+            } catch (e: Exception) {
+                MainState.Error(e.localizedMessage)
             }
         }
     }
